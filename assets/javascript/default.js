@@ -72,6 +72,8 @@
         {
             phone.alert();
         }
+
+        $('.preloader').remove();
         
         console.log(global.all_data);
     }
