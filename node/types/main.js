@@ -1,6 +1,7 @@
 var XMLHttpRequest      = require("xmlhttprequest").XMLHttpRequest;
 var convert             = require('xml-js');
 var cheerio             = require('cheerio');
+var request = require('request');
 
 module.exports = {
     init:function(initPlagins)
@@ -39,6 +40,7 @@ var action_linker =
     "add_offer": add_offer,
     "setUser": setUser,
     "setAlert": setAlert,
+    "add_offer_next": add_offer_next,
 }
 
 async function setAlert(socket,data,callback)
@@ -136,18 +138,50 @@ async function setUser(socket,data,callback)
 
 async function add_offer(socket,data,callback)
 {
+    var options = 
+    {
+        'method': 'GET',
+        'url': 'https://api.guruleads.ru/1.0/offers/list?access-token=8541fd31930a73f712e6ea6e2f6b03bf',
+        'headers': {
+            'Cookie': '_csrf=e27727803b82f08eaea834edd051894adeb4d9f11ab4e0344743e86c57993e98a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22R8gdF1iUD5z00fyj7focASv8KsDopRRU%22%3B%7D; glsid=hfuknokkjbk12i8pcaeooi8ncq'
+        }
+    };
+    request(options, function (error, response) 
+    {
+        if (error) throw new Error(error);
+
+        var _response = JSON.parse(response.body.toString());
+
+        if(_response.status == "success")
+        {
+            var _data       = _response.data;
+            var _element    = _data.filter(function (obj) { return obj.id == data.id_guruleads });
+
+            callback({
+                element: _element[0],
+                data: data,
+            });
+        } else 
+        {
+            callback("error");
+        }
+    });
+}
+
+async function add_offer_next(socket,data,callback)
+{
     await Member.create({
-        name: data.name,
-        min_money: data.min_money,
-        max_money: data.max_money,
-        time: data.time,
-        min_date: data.min_date,
-        max_date: data.max_date,
-        procent: data.procent,
-        id_guruleads: data.id_guruleads,
-        admin_rate: data.admin_rate,
-        url_guruleads: data.url_guruleads,
-        img: data.img,
+        name: data.data.name,
+        min_money: data.data.min_money,
+        max_money: data.data.max_money,
+        time: data.data.time,
+        min_date: data.data.min_date,
+        max_date: data.data.max_date,
+        procent: data.data.procent,
+        id_guruleads: data.data.id_guruleads,
+        admin_rate: 0,
+        url_guruleads: `https://gl.guruleads.ru/click/8797/${data.data.id_guruleads}`,
+        img: data.element.url_logo,
     })
 
     callback('ok');

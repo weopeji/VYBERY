@@ -203,7 +203,7 @@
                     var _block = $(`
                         <div class="index_page_body_block_present_block default_style_block" data="${el.url_guruleads}">
                             <div class="index_page_body_block_present_block_img">
-                                <img src="./members_fonts/${el.img}" alt="">
+                                <img src="${el.img}" alt="">
                             </div>
                             <div class="index_page_body_block_present_block_info">
                                 <div class="index_page_body_block_present_block_info_line">
@@ -312,7 +312,7 @@
                         <div class="index_page_header_upper_centr">
                             <div class="index_page_header_upper_centr_row">
                                 <div class="index_page_header_upper_centr_button">
-                                    <span>Зарабатывай</span>
+                                    <span>Партнерам</span>
                                 </div>
                                 <a></a>
                                 <div class="index_page_header_upper_centr_button" data="help">
@@ -322,13 +322,13 @@
                         </div>
                         <div class="index_page_header_upper_right">
                             <div class="index_page_header_upper_right_row">
-                                <div class="index_page_header_upper_right_button">
+                                <div class="index_page_header_upper_right_button" data="telegram">
                                     <i class="fab fa-telegram-plane"></i>
                                 </div>
-                                <div class="index_page_header_upper_right_button">
+                                <div class="index_page_header_upper_right_button" data="instagram">
                                     <i class="fab fa-instagram"></i>
                                 </div>
-                                <div class="index_page_header_upper_right_button">
+                                <div class="index_page_header_upper_right_button" data="vkontakte">
                                     <i class="fab fa-vk"></i>
                                 </div>
                             </div>
@@ -345,7 +345,7 @@
                     </div>
                     <div class="index_page_header_body">
                         <div class="index_page_header_body_row">
-                            <h1>Супермаркет финансовых <br> услуг ВЫБЕРИ</h1>
+                            <h1>Супермаркет финансовых <br> услуг</h1>
                             <p>Выберите лучшие микрокредиты от МФО, проверенных нашими экспертами.</p>
                             <div class="index_page_header_body_buttons">
                                 <!-- <div class="index_page_header_body_buttons_get">
@@ -383,12 +383,20 @@
 
             _block.find('.index_page_header_body_buttons_settings').click( function() {
                 location.href = "./?page=members";
-            })
+            });
 
             _block.find('.index_page_header_upper_centr_button[data="help"]').click( function() {
                 var _alerts = new alerts();
                 _alerts.put('relocation_help');
                 window.open("https://t.me/Joygoodnight");
+            });
+
+            _block.find('.index_page_header_upper_right_button[data="instagram"]').click( function() {
+                window.open("https://instagram.com/vyberistore.ru?utm_medium=copy_link");
+            })
+
+            _block.find('.index_page_header_upper_right_button[data="telegram"]').click( function() {
+                window.open("https://t.me/vyberi_store");
             })
 
             $('.index_page').append(_block);
@@ -533,7 +541,7 @@
                 var _block = $(`
                     <div class="index_page_body_block_present_block default_style_block" data="${el.url_guruleads}">
                         <div class="index_page_body_block_present_block_img">
-                            <img src="./members_fonts/${el.img}" alt="">
+                            <img src="${el.img}" alt="">
                         </div>
                         <div class="index_page_body_block_present_block_info">
                             <div class="index_page_body_block_present_block_info_line">
