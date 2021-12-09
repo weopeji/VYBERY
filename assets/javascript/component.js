@@ -723,6 +723,37 @@
         }
     }
 
+    class phone
+    {
+        constructor() {};
+
+        async alert()
+        {
+            var _block = $(`
+                <div class="phone_alert">
+                    <div class="phone_alert_close">
+                        <i class="fal fa-times"></i>
+                    </div>
+                    <div class="phone_alert_text">
+                        <span>ВыбериStore теперь и в мобильном <br>приложении</span>
+                        <div class="phone_alert_text_stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="phone_alert_download">
+                        <span>Установить</span>
+                    </div>
+                </div>
+            `);
+
+            $('body').append(_block);
+        }
+    }
+
     if(!global.Components)
     {
         global.Components = {
@@ -736,6 +767,7 @@
             intro_members,
             all_members,
             alerts,
+            phone,
         }
     }
 

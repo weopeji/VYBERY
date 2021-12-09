@@ -22,6 +22,7 @@
         const all_members       = new global.Components.all_members();
         const settings          = new global.Components.settings();
         const alerts            = new global.Components.alerts();
+        const phone             = new global.Components.phone();
 
         global.all_data     = await all_data.render();
 
@@ -62,6 +63,13 @@
             render[_page]();
         } else {
             render["default"]();
+        }
+
+        var _widthWindow = global.innerWidth;
+
+        if(_widthWindow <= 930)
+        {
+            phone.alert();
         }
         
         console.log(global.all_data);
