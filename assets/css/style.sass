@@ -46,7 +46,8 @@ yellow
     margin: 0 auto
     justify-content: space-between
     position: relative
-    z-index: 1000
+    z-index: 100000
+    position: relative
 
 .index_page_header_upper_logo
     display: flex
@@ -231,7 +232,7 @@ h1
 
 .index_page_bottom_row
     text-align: center
-    width: 30%
+    width: fit-content
 
 .index_page_bottom
     display: flex
@@ -495,6 +496,45 @@ h1
 
 .phone_alert_download
     color: #2082af
+
+.header_menu_block
+    width: 100%
+    height: 100vh
+    position: fixed
+    top: 0
+    left: 100%
+    background-color: #192C46
+    z-index: 1
+    transition: all 0.5s
+    color: white
+
+.header_menu_block.selected
+    left: 0
+
+.index_page_header_upper_menu_row
+    span.selected
+        transition: all .5s
+        a:nth-child(2)
+            display: none
+
+        a:nth-child(1)
+            transform: rotate(45deg)
+            position: relative
+            top: 5px
+
+        a:nth-child(3)
+            transform: rotate(315deg)
+            position: relative
+            top: -6px
+            
+
+.header_menu_block_buttons_line
+    width: 90%
+    margin: 0 auto
+    padding: 25px 0
+    font-size: 25px
+    color: white
+    border-bottom: 1px solid #2082af
 
 @media (max-width: 1850px)
     

@@ -317,6 +317,58 @@
         async render(data)
         {
             var _block = $(`
+                <div class="header_menu_block">
+                    <div class="index_page_header_upper">
+                        <div class="index_page_header_upper_logo">
+                            <span>ВЫБЕРИ</span>
+                            <div class="index_page_header_upper_logo_info">
+                                <a>ФИНАНСОВЫЙ</a> <br>
+                                <c>СУПЕРМАРКЕТ</c>
+                            </div>
+                        </div>
+                        <div class="index_page_header_upper_centr">
+                            <div class="index_page_header_upper_centr_row">
+                                <div class="index_page_header_upper_centr_button">
+                                    <span>Партнерам</span>
+                                </div>
+                                <a></a>
+                                <div class="index_page_header_upper_centr_button" data="help">
+                                    <span>Поддержка</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="index_page_header_upper_right">
+                            <div class="index_page_header_upper_right_row">
+                                <div class="index_page_header_upper_right_button" data="telegram">
+                                    <i class="fab fa-telegram-plane"></i>
+                                </div>
+                                <div class="index_page_header_upper_right_button" data="instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <div class="index_page_header_upper_right_button" data="vkontakte">
+                                    <i class="fab fa-vk"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="index_page_header_upper_menu">
+                            <div class="index_page_header_upper_menu_row">
+                                <span>
+                                    <a></a>
+                                    <a></a>
+                                    <a></a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>   
+                    <div class="header_menu_block_buttons">
+                        <div class="header_menu_block_buttons_line">
+                            <span>Поддержка</span>
+                        </div>
+                        <div class="header_menu_block_buttons_line">
+                            <span>Партнерам</span>
+                        </div>
+                    </div>
+                </div>
                 <div class="index_page_header">
                     <img src="./assets/images/image.png" alt="" class="image_logo">
                     <div class="index_page_header_upper">
@@ -415,6 +467,11 @@
 
             _block.find('.index_page_header_upper_right_button[data="telegram"]').click( function() {
                 window.open("https://t.me/vyberi_store");
+            })
+
+            _block.find('.index_page_header_upper_menu_row span').click( function() {
+                $('.header_menu_block').toggleClass('selected');
+                $('.index_page_header_upper_menu_row span').toggleClass('selected');
             })
 
             $('.index_page').append(_block);
