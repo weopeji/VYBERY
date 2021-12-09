@@ -36,6 +36,7 @@
                 await close_block       .render();
                 await intro_members     .render();
                 await all_members       .render();
+                await bottom            .render();
 
                 alerts                  .put('page_members');
             },

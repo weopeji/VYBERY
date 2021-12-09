@@ -300,6 +300,18 @@
                 </div>
             `);
 
+            block.find('.index_page_header_upper_right_button[data="instagram"]').click( function() {
+                var _alerts = new alerts();
+                _alerts.put('instagram');
+                window.open("https://instagram.com/vyberistore.ru?utm_medium=copy_link");
+            })
+
+            block.find('.index_page_header_upper_right_button[data="telegram"]').click( function() {
+                var _alerts = new alerts();
+                _alerts.put('telegram');
+                window.open("https://t.me/vyberi_store");
+            })
+
             block.find('.index_page_header_upper_right_row').css({
                 "margin": "0 auto",
                 "width": "fit-content",
@@ -361,10 +373,10 @@
                         </div>
                     </div>   
                     <div class="header_menu_block_buttons">
-                        <div class="header_menu_block_buttons_line">
+                        <div class="header_menu_block_buttons_line" data="help">
                             <span>Поддержка</span>
                         </div>
-                        <div class="header_menu_block_buttons_line">
+                        <div class="header_menu_block_buttons_line" data="more">
                             <span>Партнерам</span>
                         </div>
                     </div>
@@ -462,16 +474,26 @@
             });
 
             _block.find('.index_page_header_upper_right_button[data="instagram"]').click( function() {
+                var _alerts = new alerts();
+                _alerts.put('instagram');
                 window.open("https://instagram.com/vyberistore.ru?utm_medium=copy_link");
             })
 
             _block.find('.index_page_header_upper_right_button[data="telegram"]').click( function() {
+                var _alerts = new alerts();
+                _alerts.put('telegram');
                 window.open("https://t.me/vyberi_store");
             })
 
             _block.find('.index_page_header_upper_menu_row span').click( function() {
                 $('.header_menu_block').toggleClass('selected');
                 $('.index_page_header_upper_menu_row span').toggleClass('selected');
+            })
+
+            _block.find('.header_menu_block_buttons_line[data="help"]').click( function() {
+                var _alerts = new alerts();
+                _alerts.put('relocation_help');
+                window.open("https://t.me/Joygoodnight");
             })
 
             $('.index_page').append(_block);
