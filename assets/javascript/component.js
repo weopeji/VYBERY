@@ -443,13 +443,13 @@
                         <div class="intro_members_input_block">
                             <div class="intro_members_input_block_inputs">
                                 <div class="intro_members_input_block_inputs_more">
-                                    <input type="text" placeholder="Выберите сумму" data="money">
+                                    <input type="text" placeholder="Выберите сумму" data="money" inputmode="numeric">
                                     <div class="intro_members_input_block_inputs_more_scrolling">
                                         <input type="range" min="1" max="100" value="0" data="scroll_money">
                                     </div>
                                 </div>
                                 <div class="intro_members_input_block_inputs_more">
-                                    <input type="text" placeholder="Срок, дней" data="days">
+                                    <input type="text" placeholder="Срок, дней" data="days" inputmode="numeric">
                                     <div class="intro_members_input_block_inputs_more_scrolling">
                                         <input type="range" min="1" max="100" value="0">
                                     </div>
