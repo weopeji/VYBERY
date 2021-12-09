@@ -282,11 +282,29 @@
                                 <c>СУПЕРМАРКЕТ</c>
                             </div>
                         </div>
-                        <p>Торговая марка является собственностью компании регулируется Министерством Экономики и Коммуникаций Эстонии. Криптовалютная лицензия #FVT000468 от 01.03.2021. Комиссией по финансовым услугам Вануату. Финансовая лицензия #15068 от 16.05.2021.</p>
+                        <div class="index_page_bottom_social">
+                            <div class="index_page_header_upper_right_row">
+                                <div class="index_page_header_upper_right_button" data="telegram">
+                                    <i class="fab fa-telegram-plane"></i>
+                                </div>
+                                <div class="index_page_header_upper_right_button" data="instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <div class="index_page_header_upper_right_button" data="vkontakte">
+                                    <i class="fab fa-vk"></i>
+                                </div>
+                            </div>
+                        </div>
                         <p>2021 ©</p>
                     </div>
                 </div>
             `);
+
+            block.find('.index_page_header_upper_right_row').css({
+                "margin": "0 auto",
+                "width": "fit-content",
+                "margin-top": "20px",
+            })
 
             $('.index_page').append(block);
         }
@@ -749,6 +767,10 @@
                     </div>
                 </div>
             `);
+
+            _block.find('.phone_alert_close').click( function () {
+                $('.phone_alert').remove();
+            })
 
             $('body').append(_block);
         }

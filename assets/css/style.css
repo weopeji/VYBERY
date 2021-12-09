@@ -330,7 +330,7 @@ h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 100px 0;
+  padding: 20px 0;
   background: radial-gradient(845.04px at 50% 1.82%, #003172 0, #052146 100%);
   opacity: .9;
   color: white;
