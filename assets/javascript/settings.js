@@ -188,10 +188,19 @@
 
         async render() 
         {
-            this.global_block.append(await this.renderMenu());
-            this.global_block.append(await this.renderAddMember());
+            var _more = _GET('more');
 
-            $('.index_page').append(this.global_block);
+            var funs = {
+                "add_offer": async function ()
+                {
+                    this.global_block.append(await this.renderMenu());
+                    this.global_block.append(await this.renderAddMember());
+        
+                    $('.index_page').append(this.global_block);
+                },
+            }
+
+            funs[_more]();
         }
     }
 

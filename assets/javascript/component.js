@@ -504,7 +504,7 @@
     {
         constructor() {};
 
-        async render()
+        async render(data)
         {
             var _block = $(`
                 <div class="close_block">
@@ -512,6 +512,9 @@
                         <div class="close_block_return">
                             <i class="fas fa-chevron-left"></i>
                             <span>НАЗАД</span>
+                        </div>
+                        <div class="close_block_more_buttons">
+                            
                         </div>
                     </div>
                 </div>
@@ -521,6 +524,34 @@
             {
                 location.href = "./";
             })
+
+            if(data)
+            {
+                var funs = {
+                    "settings": function()
+                    {
+                        var _blockButton = $(`
+                            <div class="close_block_more_buttons_line" data="add_offer">
+                                <span>Добавить офера</span>
+                            </div>
+                            <div class="close_block_more_buttons_line" data="clicks">
+                                <span>Действия пользователей</span>
+                            </div>
+                        `);
+
+                        _block.find('.close_block_more_buttons').append(_blockButton);
+
+                        _block.find('.close_block_more_buttons_line').click( function () {
+                            location.href = "./?page=settings&more=" + $(this).attr('data');
+                        })
+                    }
+                }
+
+                if(data.type)
+                {
+                    funs[data.type]();
+                }
+            }
 
             $('.index_page').append(_block);
         }

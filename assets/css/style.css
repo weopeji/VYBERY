@@ -366,6 +366,27 @@ h1 {
 
 .close_block_row {
   width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.close_block_more_buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 60px;
+}
+
+.close_block_more_buttons_line {
+  margin-left: 20px;
+  cursor: pointer;
 }
 
 .intro_members {

@@ -52,7 +52,7 @@
             "settings": async function()
             {
                 await header            .render({size: "min"});
-                await close_block       .render();
+                await close_block       .render({type: "settings"});
                 await settings          .render();
 
                 alerts                  .put('page_settings');
