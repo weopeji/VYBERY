@@ -88,6 +88,11 @@
 
         async render()
         {
+            var _news = await callApi({
+                methodName: "_news",
+                data: null,
+            });
+
             var newsBlock = $(`
                 <div class="index_page_body_block_news_body">
                     <div class="index_page_body_block_news_row">
@@ -122,18 +127,18 @@
                 </div>
             `);
 
-            newsBlock.find('.news_block_menu_line[data="1"] span').html(global.all_data.news[0].data.title._text);
-            newsBlock.find('.news_block_menu_line[data="1"] p').html(global.all_data.news[0].data.description._text);
+            newsBlock.find('.news_block_menu_line[data="1"] span').html(_news[0].data.title._text);
+            newsBlock.find('.news_block_menu_line[data="1"] p').html(_news[0].data.description._text);
 
-            newsBlock.find('.news_block_menu_line[data="2"] span').html(global.all_data.news[1].data.title._text);
-            newsBlock.find('.news_block_menu_line[data="2"] p').html(global.all_data.news[1].data.description._text);
+            newsBlock.find('.news_block_menu_line[data="2"] span').html(_news[1].data.title._text);
+            newsBlock.find('.news_block_menu_line[data="2"] p').html(_news[1].data.description._text);
 
-            newsBlock.find('.news_block_menu_line[data="3"] span').html(global.all_data.news[2].data.title._text);
-            newsBlock.find('.news_block_menu_line[data="3"] p').html(global.all_data.news[2].data.description._text);
+            newsBlock.find('.news_block_menu_line[data="3"] span').html(_news[2].data.title._text);
+            newsBlock.find('.news_block_menu_line[data="3"] p').html(_news[2].data.description._text);
 
-            newsBlock.find('.news_block_body_img img').attr("src", global.all_data.news[3].data.image_nees);
-            newsBlock.find('.news_block_body span').html(global.all_data.news[3].data.title._text);
-            newsBlock.find('.news_block_body p').html(global.all_data.news[3].data.description._text);
+            newsBlock.find('.news_block_body_img img').attr("src", _news[3].data.image_nees);
+            newsBlock.find('.news_block_body span').html(_news[3].data.title._text);
+            newsBlock.find('.news_block_body p').html(_news[3].data.description._text);
 
             $('.index_page').append(newsBlock);
         }
@@ -145,7 +150,7 @@
             this.global_block = $(`
                 <div class="index_page_body">
                     <div class="index_page_body_block">
-                        <h1>Лучшие предложения</h1>
+                        <h1>Лучшие микрозаймы</h1>
 
                         <div class="index_page_body_block_present">
 
@@ -159,7 +164,13 @@
 
         async render()
         {
+            var getBest = await callApi({
+                methodName: "getBest",
+                data: null,
+            });
+
             this.global_block.find('.index_page_body_block_present').css('flex-wrap', 'wrap');
+            this.global_block.css('padding-bottom', 0);
 
             var _this       = this;
             var _width      = document.documentElement.clientWidth;
@@ -176,13 +187,13 @@
                 _many = 6;
             }
 
-            global.all_data.best.forEach(function(el) 
+            getBest.forEach(function(el) 
             {
                 _manyNow++;
 
                 if(_manyNow <= _many)
                 {
-                    var time = el.time;
+                    var time = el.data.time;
 
                     if(time <= 5)
                     {
@@ -208,7 +219,7 @@
                             <div class="index_page_body_block_present_block_info">
                                 <div class="index_page_body_block_present_block_info_line">
                                     <a>Сумма</a>
-                                    <span>${el.min_money} ₽ – ${el.max_money} ₽</span>
+                                    <span>${el.data.min_money} ₽ – ${el.data.max_money} ₽</span>
                                 </div>
                                 <div class="index_page_body_block_present_block_info_line">
                                     <a>Время</a>
@@ -216,11 +227,11 @@
                                 </div>
                                 <div class="index_page_body_block_present_block_info_line">
                                     <a>Срок</a>
-                                    <span>${el.min_date} – ${el.max_date} дней</span>
+                                    <span>${el.data.min_date} – ${el.data.max_date} дней</span>
                                 </div>
                                 <div class="index_page_body_block_present_block_info_line">
                                     <a>Ставка</a>
-                                    <span>от ${el.procent}%</span>
+                                    <span>от ${el.data.procent}%</span>
                                 </div>
                             </div>
                         </div>
@@ -276,10 +287,15 @@
                 <div class="index_page_bottom">
                     <div class="index_page_bottom_row">
                         <div class="index_page_header_upper_logo">
-                            <span>ВЫБЕРИ</span>
+                            <span>
+                                <a></a>
+                                <a></a>
+                                <a></a>
+                                <a></a>
+                            </span>
                             <div class="index_page_header_upper_logo_info">
-                                <a>ФИНАНСОВЫЙ</a> <br>
-                                <c>СУПЕРМАРКЕТ</c>
+                                <a>ВЫБЕРИ</a> <br>
+                                <c>STORE</c>
                             </div>
                         </div>
                         <div class="index_page_bottom_social">
@@ -317,6 +333,10 @@
                 "width": "fit-content",
                 "margin-top": "20px",
             })
+
+            block.find('.index_page_header_upper_logo').css('color', 'white');
+            block.find('.index_page_header_upper_logo').css('text-align', 'left');
+            block.find('.index_page_header_upper_right_button').css('color', 'white');
 
             $('.index_page').append(block);
         }
@@ -385,18 +405,28 @@
                     <img src="./assets/images/image.png" alt="" class="image_logo">
                     <div class="index_page_header_upper">
                         <div class="index_page_header_upper_logo">
-                            <span>ВЫБЕРИ</span>
+                            <span>
+                                <a></a>
+                                <a></a>
+                                <a></a>
+                                <a></a>
+                            </span>
                             <div class="index_page_header_upper_logo_info">
-                                <a>ФИНАНСОВЫЙ</a> <br>
-                                <c>СУПЕРМАРКЕТ</c>
+                                <a>ВЫБЕРИ</a> <br>
+                                <c>STORE</c>
                             </div>
                         </div>
                         <div class="index_page_header_upper_centr">
                             <div class="index_page_header_upper_centr_row">
                                 <div class="index_page_header_upper_centr_button">
-                                    <span>Партнерам</span>
+                                    <span>Новости</span>
                                 </div>
-                                <a></a>
+                                <div class="index_page_header_upper_centr_button">
+                                    <span>Кредитный рэйтинг</span>
+                                </div>
+                                <div class="index_page_header_upper_centr_button">
+                                    <span>Стать партнером</span>
+                                </div>
                                 <div class="index_page_header_upper_centr_button" data="help">
                                     <span>Поддержка</span>
                                 </div>
@@ -454,7 +484,6 @@
                         {
                             _block.find('.index_page_header_body').css({display: "none"})
                             _block.css('height', "100px");
-                            _block.css('background', "radial-gradient(circle farthest-side at 49% 150%, #001532 0%, #006dff 0%, #001532 1%)");
                             _block.find('.image_logo').css('display', 'none');
                         }
                     }
@@ -496,6 +525,10 @@
                 window.open("https://t.me/Joygoodnight");
             })
 
+            _block.find('.index_page_header_upper_logo').click( function() {
+                location.href = "./";
+            })
+
             $('.index_page').append(_block);
         }
     }
@@ -533,10 +566,7 @@
                         var _blockButton = $(`
                             <div class="close_block_more_buttons_line" data="add_offer">
                                 <span>Добавить офера</span>
-                            </div>
-                            <div class="close_block_more_buttons_line" data="clicks">
-                                <span>Действия пользователей</span>
-                            </div>
+                            </div>      
                         `);
 
                         _block.find('.close_block_more_buttons').append(_blockButton);
@@ -641,14 +671,18 @@
 
         async render()
         {
-            var allMembers  = global.all_data.members;
+            var allMembers = await callApi({
+                methodName: "getallMembers",
+                data: null,
+            });
+
             var _this       = this;
 
             this.global_block.find('.index_page_body_block_present').css('flex-wrap', 'wrap');
 
             allMembers.forEach(el => 
             {
-                var time = el.time;
+                var time = el.data.time;
 
                 if(time <= 5)
                 {
@@ -674,7 +708,7 @@
                         <div class="index_page_body_block_present_block_info">
                             <div class="index_page_body_block_present_block_info_line">
                                 <a>Сумма</a>
-                                <span>${el.min_money} ₽ – ${el.max_money} ₽</span>
+                                <span>${el.data.min_money} ₽ – ${el.data.max_money} ₽</span>
                             </div>
                             <div class="index_page_body_block_present_block_info_line">
                                 <a>Время</a>
@@ -682,11 +716,11 @@
                             </div>
                             <div class="index_page_body_block_present_block_info_line">
                                 <a>Срок</a>
-                                <span>${el.min_date} – ${el.max_date} дней</span>
+                                <span>${el.data.min_date} – ${el.data.max_date} дней</span>
                             </div>
                             <div class="index_page_body_block_present_block_info_line">
                                 <a>Ставка</a>
-                                <span>от ${el.procent}%</span>
+                                <span>от ${el.data.procent}%</span>
                             </div>
                         </div>
                     </div>
@@ -886,6 +920,118 @@
         }
     }
 
+    class header_buttons
+    {
+        constructor() {};
+
+        async render()
+        {
+            var _block = $(`
+                <div class="index_page_body">
+                    <div class="header_buttons">
+                        <div class="header_buttons_line" data="members">
+                            <div class="header_buttons_line_row">
+                                <i class="fad fa-sack" style="color: #00AFFF"></i>
+                                <span>Микрозаймы</span>
+                            </div>
+                        </div>
+                        <div class="header_buttons_line">
+                            <div class="header_buttons_line_row">
+                                <i class="fad fa-wallet" style="color: #F655A3"></i>
+                                <span>Кредиты</span>
+                            </div>
+                        </div>
+                        <div class="header_buttons_line" data="cards">
+                            <div class="header_buttons_line_row">
+                                <i class="fad fa-credit-card" style="color: #3ABC49"></i>
+                                <span>Карты</span>
+                            </div>
+                        </div>
+                        <div class="header_buttons_line">
+                            <div class="header_buttons_line_row">
+                                <i class="fad fa-home-heart" style="color: #FF7C53"></i>
+                                <span>Ипотека</span>
+                            </div>
+                        </div>
+                        <div class="header_buttons_line">
+                            <div class="header_buttons_line_row">
+                                <i class="fad fa-car-alt" style="color: #C054D3"></i>
+                                <span>Авто кредит</span>
+                            </div>
+                        </div>
+                        <div class="header_buttons_line">
+                            <div class="header_buttons_line_row">
+                                <i class="fad fa-book-open" style="color: #0DD149"></i>
+                                <span>Страхование</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `);
+
+            _block.css("padding-bottom", "0");
+            _block.find('.header_buttons_line').click( function () {
+                location.href = "./?page=" + $(this).attr('data');
+            })
+
+            $('.index_page').append(_block);
+        }
+    }
+
+    class best_cards
+    {
+        constructor() {
+            this.global_block = $(`
+                <div class="index_page_body">
+                    <div class="index_page_body_block">
+                        <h1>Лучшие Кредитные карты</h1>
+
+                        <div class="index_page_body_block_present">
+
+                            
+
+                        </div>
+                    </div>
+                </div>
+            `);
+        };
+
+        async render()
+        {
+            var getBestCards = await callApi({
+                methodName: "getBestCards",
+                data: null,
+            });
+
+            var _this = this;
+
+            this.global_block.find('.index_page_body_block_present').css('flex-wrap', 'wrap');
+            this.global_block.find('.index_page_body_block_present').css('margin-top', '50px');
+
+            getBestCards.forEach(function(el) 
+            {
+                var _block = $(`
+                    <div class="best_cards default_style_block">
+                        <div class="best_cards_img">
+                            <img src="${el.img}" alt="">
+                        </div>
+                        <h1>${el.data.description}</h1>
+                        <span>${el.data.name_bank}</span>
+                    </div>
+                `);
+
+                _block.click( function() {
+                    location.href = $(this).attr('data');
+                })
+
+                _this.global_block.find('.index_page_body_block_present').append(_block);
+
+                $('.index_page').append(_this.global_block);
+                           
+            })
+        }
+    }
+
     if(!global.Components)
     {
         global.Components = {
@@ -900,6 +1046,8 @@
             all_members,
             alerts,
             phone,
+            header_buttons,
+            best_cards,
         }
     }
 

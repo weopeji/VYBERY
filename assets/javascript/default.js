@@ -4,7 +4,9 @@
     {
         global.loadResources(['./assets/javascript/component.js'], () => {
             global.loadResources(['./assets/javascript/settings.js'], () => {
-                Main();
+                global.loadResources(['./assets/javascript/cards.js'], () => {
+                    Main();
+                });
             }); 
         });    
     });
@@ -23,6 +25,9 @@
         const settings          = new global.Components.settings();
         const alerts            = new global.Components.alerts();
         const phone             = new global.Components.phone();
+        const header_buttons    = new global.Components.header_buttons();
+        const best_cards        = new global.Components.best_cards();
+        const cards             = new global.Components.cards();
 
         global.all_data     = await all_data.render();
 
@@ -33,7 +38,6 @@
             "members": async function()
             {
                 await header            .render({size: "min"});
-                await close_block       .render();
                 await intro_members     .render();
                 await all_members       .render();
                 await bottom            .render();
@@ -42,8 +46,10 @@
             },
             "default": async function()
             {
-                await header            .render();
+                await header            .render({size: "min"});
+                await header_buttons    .render();
                 await best              .render();
+                await best_cards        .render();
                 await news              .render();
                 await bottom            .render();
 
@@ -57,6 +63,13 @@
 
                 alerts                  .put('page_settings');
             },
+            "cards": async function()
+            {
+                await header            .render({size: "min"});
+                await cards             .render();
+
+                await bottom            .render();
+            }
         }
 
         if(_page)

@@ -41,6 +41,23 @@ var action_linker =
     "setUser": setUser,
     "setAlert": setAlert,
     "add_offer_next": add_offer_next,
+    "getBest": getBest,
+    "_news": getNews,
+    "getBestCards": getBestCards,
+    "getallMembers": getallMembers,
+    "getallCards": getallCards,
+}
+
+async function getallCards(socket,data,callback)
+{
+    var allMembers = await Member.find({type: "Кредитные карты"});
+    callback(allMembers);
+}
+
+async function getallMembers(socket,data,callback)
+{
+    var allMembers = await Member.find({type: "Микрозаймы"});
+    callback(allMembers);
 }
 
 async function setAlert(socket,data,callback)
@@ -157,10 +174,7 @@ async function add_offer(socket,data,callback)
             var _data       = _response.data;
             var _element    = _data.filter(function (obj) { return obj.id == data.id_guruleads });
 
-            callback({
-                element: _element[0],
-                data: data,
-            });
+            callback(_element[0]);
         } else 
         {
             callback("error");
@@ -171,17 +185,11 @@ async function add_offer(socket,data,callback)
 async function add_offer_next(socket,data,callback)
 {
     await Member.create({
-        name: data.data.name,
-        min_money: data.data.min_money,
-        max_money: data.data.max_money,
-        time: data.data.time,
-        min_date: data.data.min_date,
-        max_date: data.data.max_date,
-        procent: data.data.procent,
-        id_guruleads: data.data.id_guruleads,
-        admin_rate: 0,
-        url_guruleads: `https://gl.guruleads.ru/click/8797/${data.data.id_guruleads}`,
-        img: data.element.url_logo,
+        name:  data.name,
+        type: data.offer.categories[0].name,
+        id_guruleads: data.offer.id,
+        img: data.offer.url_logo,
+        data: data.data,
     })
 
     callback('ok');
@@ -241,17 +249,16 @@ async function getNewsPost(many)
     });
 }
 
-async function getNews(many)
+async function getNews(socket,data,callback)
 {
-    var _time = new Date().getTime();
+    var _time   = new Date().getTime();
+    var many    = 4;
 
     var _New = await News.find( {}, { array_field: { $slice: -1 } } );
 
     if(_New.length <= 0)
     {
         var needNews = await getNewsPost(many);
-
-        console.log(_time);
 
         for (const element of needNews) 
         {
@@ -261,7 +268,7 @@ async function getNews(many)
             })
         }
 
-        return await News.find({}).limit(many);
+        callback(await News.find({}).limit(many));
     } else {
         if(_New.time - _time >= 86400000)
         {
@@ -275,26 +282,26 @@ async function getNews(many)
                 })
             }
 
-            return await News.find({}).limit(many);
+            callback(await News.find({}).limit(many));
         } else
         {
-            return await News.find({}).limit(many);
+            callback(await News.find({}).limit(many));
         }
     }
 }
 
-async function getBest()
+async function getBest(socket,data,callback)
 {
-    var _Members = await Member.find({}).limit(8);
+    var _Members = await Member.find({type: "Микрозаймы"}).limit(8);
 
-    return _Members;
+    callback(_Members);
 }
 
-async function getAllMembers()
+async function getBestCards(socket,data,callback)
 {
-    var _Members = await Member.find({});
-    
-    return _Members;
+    var _Members = await Member.find({type: "Кредитные карты"}).limit(8);
+
+    callback(_Members);
 }
 
 async function allData(socket,data,callback)
@@ -302,9 +309,6 @@ async function allData(socket,data,callback)
     var all_data = 
     {
         cbr: await getCbr(),
-        news: await getNews(4),
-        best: await getBest(),
-        members: await getAllMembers(),
     };
 
     callback(all_data);
