@@ -28,6 +28,7 @@
         const header_buttons    = new global.Components.header_buttons();
         const best_cards        = new global.Components.best_cards();
         const cards             = new global.Components.cards();
+        const logo_type         = new global.Components.logo_type();
 
         global.all_data     = await all_data.render();
 
@@ -47,6 +48,7 @@
             "default": async function()
             {
                 await header            .render({size: "min"});
+                await logo_type         .render();
                 await header_buttons    .render();
                 await best              .render();
                 await best_cards        .render();

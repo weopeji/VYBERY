@@ -1032,6 +1032,40 @@
         }
     }
 
+    class logo_type
+    {
+        constructor() {};
+
+        async render()
+        {
+            var _block = $(`
+                <div class="logo_type default_style_block">
+                    <div class="logo_type_line">
+                        <div class="logo_type_line_img">
+                            <!-- <img src="./assets/images/fone.png" alt=""> -->
+                        </div>
+                        <div class="logo_type_line_text">
+                            <div class="logo_type_line_text_left">
+                                <div class="logo_type_line_text_left_row">
+                                    <h1>Подбор кредита</h1>
+                                    <p>Подберём банки с высокой вероятностью одобрения</p>
+                                    <div class="logo_type_line_text_left_button">
+                                        <span>Подобрать кредит</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="logo_type_line_text_rigt">
+                                <img src="./assets/images/money.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `);
+
+            $('.index_page').append(_block);
+        }
+    }
+
     if(!global.Components)
     {
         global.Components = {
@@ -1048,6 +1082,7 @@
             phone,
             header_buttons,
             best_cards,
+            logo_type,
         }
     }
 
