@@ -68,8 +68,8 @@
                 await header            .render({size: "min"});
                 await logo_type         .render();
                 await header_buttons    .render();
-                await best              .render();
                 await best_cards        .render();
+                await best              .render();
                 await news              .render();
                 await bottom            .render();
 

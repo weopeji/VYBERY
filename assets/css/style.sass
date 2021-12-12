@@ -243,12 +243,10 @@ h1
         display: none
     
     span
-        font-weight: bold
         margin: 30px 0
         display: block
         font-size: 25px
         color: #162136
-        font-family: NeutralFace, 'Segoe UI', Tahoma, Geneva, Verd
 
     p
         padding: 0
@@ -419,7 +417,7 @@ h1
     flex-wrap: wrap
 
 .add_offer_block_input_line
-    width: calc(50% - 20px)
+    width: calc(100% - 20px)
     display: flex
     justify-content: center
     align-items: center
@@ -610,6 +608,7 @@ h1
     align-items: center
     justify-content: space-around
     margin-top: 40px
+    flex-wrap: wrap
 
 .header_buttons_line:hover
     box-shadow: 0 1px 2px 0 rgba(22, 33, 54, 0.46%)
@@ -625,6 +624,7 @@ h1
     cursor: pointer
     box-shadow: 0 1px 2px 0 rgba(22, 33, 54, 0.16%)
     text-align: center
+    margin-bottom: 20px
 
     i
         margin: 0 auto
@@ -641,7 +641,7 @@ h1
         
 
 .best_cards
-    width: 230px
+    width: 370px
     height: 230px
     border-radius: 8px
     background-color: white
@@ -661,12 +661,7 @@ h1
         display: block
 
 .best_cards_img
-    width: 60%
-    height: 100px
-    margin: 0 auto
-    display: flex
-    justify-content: center
-    align-items: center
+    width: 100%
 
     img
         width: 100%
@@ -902,6 +897,12 @@ h1
     .index_page_body_block_news_row 
         width: 90%
 
+    .logo_type 
+        width: 75%
+
+    .logo_type_line_text_left_row
+        width: 70%
+
 @media (max-width: 1650px)
     
     .index_page_body
@@ -911,6 +912,11 @@ h1
         .intro_members_row 
             width: 75%
 
+    .index_page_header_upper 
+        width: 80%
+
+    .logo_type 
+        width: 80%
     
 
 @media (max-width: 1550px)
@@ -918,7 +924,22 @@ h1
     .index_page_body
         width: 90%
 
+    .index_page_header_upper 
+        width: 90%
+
+    .logo_type 
+        width: 90%
+
 @media (max-width: 1400px)
+    
+    .index_page_body_block_present
+        flex-wrap: wrap
+        justify-content: space-around
+
+    .best_cards
+        margin-bottom: 30px
+
+@media (max-width: 1250px)
     
     .index_page_body_block_present_block 
         width: calc(25% - 55px)
@@ -959,11 +980,6 @@ h1
         p
             margin: 0 auto
 
-@media (max-width: 930px)
-    
-    .index_page_body_block_present_block 
-        width: calc(50% - 55px)
-
     .index_page_header_upper_centr
         display: none
 
@@ -982,6 +998,17 @@ h1
             display: flex
             justify-content: center
 
+@media (max-width: 1000px)
+    
+    .logo_type
+        width: 100%
+        margin-top: 0
+
+@media (max-width: 930px)
+    
+    .index_page_body_block_present_block 
+        width: calc(50% - 55px)
+
     .intro_members
         height: 520px
 
@@ -995,6 +1022,20 @@ h1
     .news_block_menu
         flex: none
         width: 100%
+
+    .logo_type_line_text_rigt
+        display: none
+
+    .logo_type_line_text
+        height: 100%
+
+    .logo_type_line
+        height: 100%
+
+    .logo_type_line_text_left
+        p
+            width: 100%
+
 
 @media (max-width: 600px)
     
@@ -1023,3 +1064,25 @@ h1
 
     .intro_members
         padding-top: 20px
+
+    .logo_type_line_text_left_row
+
+        h1
+            font-size: 25px
+
+        p
+            font-size: 17px
+            
+
+    .logo_type_line_text_left_button 
+        font-size: 17px
+        margin-top: 10px
+
+        i
+            font-size: 26px
+
+    .logo_type 
+        height: 250px
+
+    .logo_type_line_text_left_row 
+        width: 80%

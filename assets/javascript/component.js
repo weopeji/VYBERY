@@ -75,10 +75,10 @@
 
         async render()
         {
-            var allData         = await this._allData();
-            allData.token       = await this.getUser();
-            setCookie('token', allData.token);
-            return allData;
+            // var allData         = await this._allData();
+            // allData.token       = await this.getUser();
+            // setCookie('token', allData.token);
+            // return allData;
         }
     }
 
@@ -177,7 +177,8 @@
             });
 
             this.global_block.find('.index_page_body_block_present').css('flex-wrap', 'wrap');
-            this.global_block.css('padding-bottom', 0);
+            this.global_block.find('.index_page_body_block').css('margin', '0');
+            this.global_block.css('padding-bottom', "60px");
 
             var _this       = this;
             var _width      = document.documentElement.clientWidth;
@@ -1031,8 +1032,6 @@
                         <div class="best_cards_img">
                             <img src="${el.img}" alt="">
                         </div>
-                        <h1>${el.data.description}</h1>
-                        <span>${el.data.name_bank}</span>
                     </div>
                 `);
 
