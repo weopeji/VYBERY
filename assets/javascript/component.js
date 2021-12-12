@@ -360,10 +360,15 @@
                 <div class="header_menu_block">
                     <div class="index_page_header_upper">
                         <div class="index_page_header_upper_logo">
-                            <span>ВЫБЕРИ</span>
+                            <span>
+                                <a></a>
+                                <a></a>
+                                <a></a>
+                                <a></a>
+                            </span>
                             <div class="index_page_header_upper_logo_info">
-                                <a>ФИНАНСОВЫЙ</a> <br>
-                                <c>СУПЕРМАРКЕТ</c>
+                                <a>ВЫБЕРИ</a> <br>
+                                <c>STORE</c>
                             </div>
                         </div>
                         <div class="index_page_header_upper_centr">
@@ -401,6 +406,9 @@
                         </div>
                     </div>   
                     <div class="header_menu_block_buttons">
+                        <div class="header_menu_block_buttons_line" data="help">
+                            <span>Новости</span>
+                        </div>
                         <div class="header_menu_block_buttons_line" data="help">
                             <span>Поддержка</span>
                         </div>
