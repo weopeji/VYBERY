@@ -46,6 +46,20 @@ var action_linker =
     "getBestCards": getBestCards,
     "getallMembers": getallMembers,
     "getallCards": getallCards,
+    "getallCredits": getallCredits,
+    "getallMortgage": getallMortgage,
+}
+
+async function getallMortgage(socket,data,callback)
+{
+    var allMembers = await Member.find({type: "Ипотека"});
+    callback(allMembers);
+}
+
+async function getallCredits(socket,data,callback)
+{
+    var allMembers = await Member.find({type: "Потребительские кредиты"});
+    callback(allMembers);
 }
 
 async function getallCards(socket,data,callback)

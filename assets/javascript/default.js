@@ -5,7 +5,19 @@
         global.loadResources(['./assets/javascript/component.js'], () => {
             global.loadResources(['./assets/javascript/settings.js'], () => {
                 global.loadResources(['./assets/javascript/cards.js'], () => {
-                    Main();
+                    global.loadResources(['./assets/javascript/credits.js'], () => {
+                        global.loadResources(['./assets/javascript/mortgage.js'], () => {
+                            global.loadResources(['./assets/javascript/auto_credit.js'], () => {
+                                global.loadResources(['./assets/javascript/insurance.js'], () => {
+                                    global.loadResources(['./assets/javascript/partner.js'], () => {
+                                        global.loadResources(['./assets/javascript/help.js'], () => {
+                                            Main();
+                                        });
+                                    });
+                                });
+                            });
+                        });
+                    });
                 });
             }); 
         });    
@@ -29,6 +41,12 @@
         const best_cards        = new global.Components.best_cards();
         const cards             = new global.Components.cards();
         const logo_type         = new global.Components.logo_type();
+        const credits           = new global.Components.credits();
+        const mortgage          = new global.Components.mortgage();
+        const auto_credit       = new global.Components.auto_credit();
+        const insurance         = new global.Components.insurance();
+        const partner           = new global.Components.partner();
+        const help              = new global.Components.help();
 
         global.all_data     = await all_data.render();
 
@@ -71,6 +89,44 @@
                 await cards             .render();
 
                 await bottom            .render();
+            },
+            "credits": async function()
+            {
+                await header            .render({size: "min"});
+                await credits           .render();
+
+                await bottom            .render();
+            },
+            "mortgage": async function()
+            {
+                await header            .render({size: "min"});
+                await mortgage          .render();
+
+                await bottom            .render();
+            },
+            "auto_credit": async function() {
+                await header            .render({size: "min"});
+                await auto_credit       .render();
+
+                await bottom            .render();
+            },
+            "insurance": async function() {
+                await header            .render({size: "min"});
+                await insurance         .render();
+
+                await bottom            .render();
+            },
+            "partner": async function() {
+                await header            .render({size: "min"});
+                await partner           .render();
+
+                await bottom            .render();
+            },
+            "help": async function() {
+                await header            .render({size: "min"});
+                await help              .render();
+
+                await bottom            .render();
             }
         }
 
@@ -81,16 +137,14 @@
             render["default"]();
         }
 
-        var _widthWindow = global.innerWidth;
+        // var _widthWindow = global.innerWidth;
 
-        if(_widthWindow <= 930)
-        {
-            phone.alert();
-        }
+        // if(_widthWindow <= 930)
+        // {
+        //     phone.alert();
+        // }
 
         $('.preloader').remove();
-        
-        console.log(global.all_data);
     }
 
 }(window))

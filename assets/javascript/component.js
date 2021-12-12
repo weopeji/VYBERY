@@ -150,7 +150,14 @@
             this.global_block = $(`
                 <div class="index_page_body">
                     <div class="index_page_body_block">
-                        <h1>Лучшие микрозаймы</h1>
+                        <div class="index_page_body_block_h">
+                            <h1>Лучшие микрозаймы</h1>
+                            <div class="index_page_body_block_h_arrow">
+                                <span>Посмотреть все</span>
+                                <i class="fal fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        
 
                         <div class="index_page_body_block_present">
 
@@ -418,13 +425,10 @@
                         </div>
                         <div class="index_page_header_upper_centr">
                             <div class="index_page_header_upper_centr_row">
-                                <div class="index_page_header_upper_centr_button">
+                                <div class="index_page_header_upper_centr_button" data="news">
                                     <span>Новости</span>
                                 </div>
-                                <div class="index_page_header_upper_centr_button">
-                                    <span>Кредитный рэйтинг</span>
-                                </div>
-                                <div class="index_page_header_upper_centr_button">
+                                <div class="index_page_header_upper_centr_button" data="partner">
                                     <span>Стать партнером</span>
                                 </div>
                                 <div class="index_page_header_upper_centr_button" data="help">
@@ -496,10 +500,16 @@
                 location.href = "./?page=members";
             });
 
+            _block.find('.index_page_header_upper_centr_button[data="partner"]').click( function() {
+                location.href = "./?page=partner";
+            });
+
+            _block.find('.index_page_header_upper_centr_button[data="news"]').click( function() {
+                window.open("https://t.me/vyberi_store");
+            });
+
             _block.find('.index_page_header_upper_centr_button[data="help"]').click( function() {
-                var _alerts = new alerts();
-                _alerts.put('relocation_help');
-                window.open("https://t.me/Joygoodnight");
+                location.href = "./?page=help";
             });
 
             _block.find('.index_page_header_upper_right_button[data="instagram"]').click( function() {
@@ -520,9 +530,7 @@
             })
 
             _block.find('.header_menu_block_buttons_line[data="help"]').click( function() {
-                var _alerts = new alerts();
-                _alerts.put('relocation_help');
-                window.open("https://t.me/Joygoodnight");
+                location.href = "./?page=help";
             })
 
             _block.find('.index_page_header_upper_logo').click( function() {
@@ -935,7 +943,7 @@
                                 <span>Микрозаймы</span>
                             </div>
                         </div>
-                        <div class="header_buttons_line">
+                        <div class="header_buttons_line" data="credits">
                             <div class="header_buttons_line_row">
                                 <i class="fad fa-wallet" style="color: #F655A3"></i>
                                 <span>Кредиты</span>
@@ -947,19 +955,19 @@
                                 <span>Карты</span>
                             </div>
                         </div>
-                        <div class="header_buttons_line">
+                        <div class="header_buttons_line" data="mortgage">
                             <div class="header_buttons_line_row">
                                 <i class="fad fa-home-heart" style="color: #FF7C53"></i>
                                 <span>Ипотека</span>
                             </div>
                         </div>
-                        <div class="header_buttons_line">
+                        <div class="header_buttons_line" data="auto_credit">
                             <div class="header_buttons_line_row">
                                 <i class="fad fa-car-alt" style="color: #C054D3"></i>
                                 <span>Авто кредит</span>
                             </div>
                         </div>
-                        <div class="header_buttons_line">
+                        <div class="header_buttons_line" data="insurance">
                             <div class="header_buttons_line_row">
                                 <i class="fad fa-book-open" style="color: #0DD149"></i>
                                 <span>Страхование</span>
@@ -984,7 +992,15 @@
             this.global_block = $(`
                 <div class="index_page_body">
                     <div class="index_page_body_block">
-                        <h1>Лучшие Кредитные карты</h1>
+ 
+                        <div class="index_page_body_block_h">
+                            <h1>Лучшие Кредитные карты</h1>
+                            <div class="index_page_body_block_h_arrow">
+                                <span>Посмотреть все</span>
+                                <i class="fal fa-chevron-right"></i>
+                            </div>
+                            
+                        </div>
 
                         <div class="index_page_body_block_present">
 
@@ -1050,6 +1066,7 @@
                                     <h1>Подбор кредита</h1>
                                     <p>Подберём банки с высокой вероятностью одобрения</p>
                                     <div class="logo_type_line_text_left_button">
+                                        <i class="fad fa-arrow-alt-circle-left"></i>
                                         <span>Подобрать кредит</span>
                                     </div>
                                 </div>

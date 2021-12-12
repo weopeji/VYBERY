@@ -204,6 +204,161 @@
                         location.reload();
                     })
                 },
+                "Потребительские кредиты": function()
+                {
+                    var template = $(`
+                        <div class="settings_page_body_next">
+
+                            <h1>Информация по оферу</h1>
+
+                            <div class="settings_page_body_next_line">
+                                <span>Название на Guruleads:</span>
+                                <span>${offer.name}</span>
+                            </div>
+                            <div class="settings_page_body_next_line">
+                                <span>Категория:</span>
+                                <span>${offer.categories[0].name}</span>
+                            </div>
+                            <div class="settings_page_body_next_line">
+                                <span>Страна:</span>
+                                <span>${offer.countries[0].name}</span>
+                            </div>
+
+                            <h1>Добавочная информация</h1>
+
+                            <div class="add_offer_block_input_line">
+                                <input id="name_bank" type="text" placeholder="Название Банка">
+                            </div>
+
+                            <div class="add_offer_block_input_line">
+                                <input id="limit" type="text" placeholder="Кредитный лимит">
+                            </div>
+
+                            <div class="add_offer_block_input_line">
+                                <input id="date_min" type="text" placeholder="Срок кредита минимальный">
+                            </div>
+
+                            <div class="add_offer_block_input_line">
+                                <input id="date_max" type="text" placeholder="Срок кредита максимальный">
+                            </div>
+
+                            <div class="add_offer_block_input_line">
+                                <input id="state" type="text" placeholder="Ставка">
+                            </div>
+
+                            <div class="settings_page_body_next_buttons">
+                                <span class="settings_page_body_next_buttons_close">Отказать</span>
+                                <span class="settings_page_body_next_buttons_next">Принять</span>
+                            </div>
+                        </div>
+                    `);
+        
+                    $('.settings_page_body').append(template);
+        
+                    $('.settings_page_body_next_buttons_close').click(function() {
+                        location.reload();
+                    })
+        
+                    $('.settings_page_body_next_buttons_next').click(async function() {
+                        var add_offer_next = await callApi({
+                            methodName: "add_offer_next",
+                            data: {
+                                offer: offer,
+                                name: $('#name').val(),
+                                data: {
+                                    name_bank: $('#name_bank').val(),
+                                    limit: $('#limit').val(),
+                                    date_min: $('#date_min').val(),
+                                    date_max: $('#date_max').val(),
+                                    state: $('#state').val(),
+                                }
+                            },
+                        });
+        
+                        alert('Успешно!');
+                        location.reload();
+                    })
+                },
+                "Ипотека": async function()
+                {
+                    var template = $(`
+                        <div class="settings_page_body_next">
+
+                            <h1>Информация по оферу</h1>
+
+                            <div class="settings_page_body_next_line">
+                                <span>Название на Guruleads:</span>
+                                <span>${offer.name}</span>
+                            </div>
+                            <div class="settings_page_body_next_line">
+                                <span>Категория:</span>
+                                <span>${offer.categories[0].name}</span>
+                            </div>
+                            <div class="settings_page_body_next_line">
+                                <span>Страна:</span>
+                                <span>${offer.countries[0].name}</span>
+                            </div>
+
+                            <h1>Добавочная информация</h1>
+
+                            <div class="add_offer_block_input_line">
+                                <input id="name_bank" type="text" placeholder="Название Банка">
+                            </div>
+
+                            <div class="add_offer_block_input_line">
+                                <input id="stavka" type="text" placeholder="Ставка">
+                            </div>
+
+                            <div class="add_offer_block_input_line">
+                                <input id="pay" type="text" placeholder="Первоначальный взнос">
+                            </div>
+
+                            <div class="add_offer_block_input_line">
+                                <input id="money_max" type="text" placeholder="Максимальная сумма ипотеки">
+                            </div>
+
+                            <div class="add_offer_block_input_line">
+                                <input id="date_min" type="text" placeholder="Срок кредитования минимальный">
+                            </div>
+
+                            <div class="add_offer_block_input_line">
+                                <input id="date_max" type="text" placeholder="Срок кредитования максимальный">
+                            </div>
+
+                            <div class="settings_page_body_next_buttons">
+                                <span class="settings_page_body_next_buttons_close">Отказать</span>
+                                <span class="settings_page_body_next_buttons_next">Принять</span>
+                            </div>
+                        </div>
+                    `);
+        
+                    $('.settings_page_body').append(template);
+        
+                    $('.settings_page_body_next_buttons_close').click(function() {
+                        location.reload();
+                    })
+        
+                    $('.settings_page_body_next_buttons_next').click(async function() {
+                        var add_offer_next = await callApi({
+                            methodName: "add_offer_next",
+                            data: {
+                                offer: offer,
+                                name: $('#name').val(),
+                                data: {
+                                    name_bank: $('#name_bank').val(),
+                                    stavka: $('#stavka').val(),
+                                    pay: $('#pay').val(),
+                                    money_max: $('#money_max').val(),
+                                    date_min: $('#date_min').val(),
+                                    date_max: $('#date_max').val(),
+                                }
+                            },
+                        });
+        
+                        alert('Успешно!');
+                        location.reload();
+                    })
+                }
             };
 
             funs[type]();
