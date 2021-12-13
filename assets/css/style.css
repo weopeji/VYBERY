@@ -521,7 +521,7 @@ h1 {
   appearance: none;
   width: 27px;
   height: 27px;
-  background: #03A9F4;
+  background: #F8C11A;
   cursor: pointer;
   border-radius: 50%;
 }
@@ -1023,6 +1023,7 @@ h1 {
   width: 90%;
   margin: 0 auto;
   border-bottom: 1px solid #DDDEDE;
+  margin-top: 45px;
 }
 
 .getallCards_body_header p {
@@ -1333,11 +1334,17 @@ h1 {
   .best_cards {
     margin-bottom: 30px;
   }
+  .help_block {
+    width: 80%;
+  }
 }
 
 @media (max-width: 1250px) {
   .index_page_body_block_present_block {
     width: calc(25% - 55px);
+  }
+  .help_block {
+    width: 90%;
   }
 }
 
@@ -1399,6 +1406,14 @@ h1 {
         -ms-flex-pack: center;
             justify-content: center;
   }
+  .help_block_blocks_line {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .help_block_blocks_line_block {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -1417,6 +1432,22 @@ h1 {
   }
   .intro_members_row {
     text-align: center;
+  }
+  .getallCards {
+    position: relative;
+  }
+  .getallCards_img {
+    height: 50%;
+    border: 0;
+  }
+  .getallCards_img img {
+    margin-top: 35px;
+  }
+  .getallCards_body_description {
+    position: absolute;
+    left: 0;
+    width: 90%;
+    margin-left: 5%;
   }
 }
 
@@ -1442,6 +1473,31 @@ h1 {
   }
   .logo_type_line_text_left p {
     width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .getallCards_img {
+    -webkit-box-flex: 2;
+        -ms-flex: 2;
+            flex: 2;
+  }
+  .getallCards_body_header h1 {
+    font-size: 14px;
+  }
+  .getallCards_body_header p {
+    font-size: 11px;
+  }
+  .getallCards_body_description_line h1 {
+    font-size: 14px;
+    font-weight: 900;
+  }
+  .getallCards_body_description {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .getallCards {
+    height: 405px;
   }
 }
 
@@ -1491,6 +1547,20 @@ h1 {
   }
   .index_page_body_block_h_arrow {
     display: none;
+  }
+  .help_block p {
+    width: 90%;
+  }
+  .help_block_blocks_line_block_img span {
+    width: 50px;
+    height: 50px;
+  }
+  .help_block_blocks_line_block_img i {
+    font-size: 25px;
+  }
+  .help_block_blocks_line_block_text p {
+    font-size: 25px;
+    width: 100%;
   }
 }
 /*# sourceMappingURL=style.css.map */

@@ -43,13 +43,13 @@
                         <div class="intro_members_input_block">
                             <div class="intro_members_input_block_inputs">
                                 <div class="intro_members_input_block_inputs_more">
-                                    <input type="text" placeholder="Выберите сумму" data="money" inputmode="numeric">
+                                    <input type="text" placeholder="Кредитный лимит" data="money" inputmode="numeric">
                                     <div class="intro_members_input_block_inputs_more_scrolling">
                                         <input type="range" min="1" max="100" value="0" data="scroll_money">
                                     </div>
                                 </div>
                                 <div class="intro_members_input_block_inputs_more">
-                                    <input type="text" placeholder="Срок, дней" data="days" inputmode="numeric">
+                                    <input type="text" placeholder="Льготный период" data="days" inputmode="numeric">
                                     <div class="intro_members_input_block_inputs_more_scrolling">
                                         <input type="range" min="1" max="100" value="0">
                                     </div>
@@ -136,7 +136,7 @@
                             <div class="getallCards_body_description">
                                 <div class="getallCards_body_description_line">
                                     <span>Кредитный лимит</span>
-                                    <h1>${el.data.money}</h1>
+                                    <h1>${el.data.money} ₽</h1>
                                 </div>
                                 <div class="getallCards_body_description_line">
                                     <span>Льготный период</span>
@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="getallCards_body_description_line">
                                     <span>Стоймость обслуживания</span>
-                                    <h1>${el.data.how_many} руб / год</h1>
+                                    <h1>${el.data.how_many} ₽ / год</h1>
                                 </div>
                             </div>
                         </div>

@@ -38,7 +38,7 @@
             var _block = $(`
                 <div class="intro_members">
                     <div class="intro_members_row">
-                        <h1>Кредитные карты</h1>
+                        <h1>Потребительские кредиты</h1>
                         <p>Выберите лучшие микрокредиты от МФО, проверенных нашими экспертами. На 16.11.2021 вам доступно 191 займ со ставкой от 0% в день. Увеличьте шансы на получение денег — отправьте заявку минимум в две МФО.</p>
                         <div class="intro_members_input_block">
                             <div class="intro_members_input_block_inputs">

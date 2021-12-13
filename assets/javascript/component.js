@@ -626,7 +626,7 @@
                                 <div class="intro_members_input_block_inputs_more">
                                     <input type="text" placeholder="Срок, дней" data="days" inputmode="numeric">
                                     <div class="intro_members_input_block_inputs_more_scrolling">
-                                        <input type="range" min="1" max="100" value="0">
+                                        <input type="range" min="1" max="100" value="0" data="scroll_date">
                                     </div>
                                 </div>
                             </div>
@@ -646,6 +646,11 @@
             _block.find('input[data="scroll_money"]').on('input',function () {
                 var iVal = $(this).val();
                 $('input[data="money"]').val(iVal * 1000);
+            });
+
+            _block.find('input[data="scroll_date"]').on('input',function () {
+                var iVal = $(this).val();
+                $('input[data="days"]').val(iVal);
             });
 
             _block.find('input[data="money"]').on('input',function () {
@@ -779,7 +784,11 @@
             var _money                  = parseInt(_data.money, 10);
             var _days                   = parseInt(_data.days, 10);
 
-            var allMembers              = global.all_data.members;
+            var allMembers = await callApi({
+                methodName: "getallMembers",
+                data: null,
+            });
+
             var allRedactingMembers     = [];
 
             if(!isNaN(_money) || !isNaN(_days))
@@ -791,8 +800,8 @@
             {
                 for(const element in allMembers)
                 {
-                    var max_money   = parseInt(allMembers[element].max_money.replace(/\s/g, ''), 10);
-                    var min_money   = parseInt(allMembers[element].min_money.replace(/\s/g, ''), 10);
+                    var max_money   = parseInt(allMembers[element].data.max_money.replace(/\s/g, ''), 10);
+                    var min_money   = parseInt(allMembers[element].data.min_money.replace(/\s/g, ''), 10);
 
                     if(_money >= min_money && _money <= max_money) {
                         allRedactingMembers.push(allMembers[element]);
@@ -806,8 +815,8 @@
                 {
                     for(const element in allRedactingMembers)
                     {
-                        var min_date   = parseInt(allRedactingMembers[element].min_date.replace(/\s/g, ''), 10);
-                        var max_date   = parseInt(allRedactingMembers[element].max_date.replace(/\s/g, ''), 10);
+                        var min_date   = parseInt(allRedactingMembers[element].data.min_date.replace(/\s/g, ''), 10);
+                        var max_date   = parseInt(allRedactingMembers[element].data.max_date.replace(/\s/g, ''), 10);
 
                         if(_days >= min_date && _days <= max_date) {}
                         else {
@@ -817,8 +826,8 @@
                 } else {
                     for(const element in allMembers)
                     {
-                        var min_date   = parseInt(allMembers[element].min_date.replace(/\s/g, ''), 10);
-                        var max_date   = parseInt(allMembers[element].max_date.replace(/\s/g, ''), 10);
+                        var min_date   = parseInt(allMembers[element].data.min_date.replace(/\s/g, ''), 10);
+                        var max_date   = parseInt(allMembers[element].data.max_date.replace(/\s/g, ''), 10);
 
                         if(_days >= min_date && _days <= max_date) {
                             allRedactingMembers.push(allMembers[element]);
@@ -831,7 +840,7 @@
             {
                 
 
-                var time = el.time;
+                var time = el.data.time;
 
                 if(time <= 5)
                 {
@@ -851,12 +860,12 @@
                 var _block = $(`
                     <div class="index_page_body_block_present_block default_style_block" data="${el.url_guruleads}">
                         <div class="index_page_body_block_present_block_img">
-                            <img src="./members_fonts/${el.img}" alt="">
+                            <img src="${el.img}" alt="">
                         </div>
                         <div class="index_page_body_block_present_block_info">
                             <div class="index_page_body_block_present_block_info_line">
                                 <a>Сумма</a>
-                                <span>${el.min_money} ₽ – ${el.max_money} ₽</span>
+                                <span>${el.data.min_money} ₽ – ${el.data.max_money} ₽</span>
                             </div>
                             <div class="index_page_body_block_present_block_info_line">
                                 <a>Время</a>
@@ -864,11 +873,11 @@
                             </div>
                             <div class="index_page_body_block_present_block_info_line">
                                 <a>Срок</a>
-                                <span>${el.min_date} – ${el.max_date} дней</span>
+                                <span>${el.data.min_date} – ${el.data.max_date} дней</span>
                             </div>
                             <div class="index_page_body_block_present_block_info_line">
                                 <a>Ставка</a>
-                                <span>от ${el.procent}%</span>
+                                <span>от ${el.data.procent}%</span>
                             </div>
                         </div>
                     </div>
